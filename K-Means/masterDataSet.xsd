@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="masterDataSet" targetNamespace="http://tempuri.org/masterDataSet.xsd" xmlns:mstns="http://tempuri.org/masterDataSet.xsd" xmlns="http://tempuri.org/masterDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="masterConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="masterConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.K_Means.Properties.Settings.GlobalReference.Default.masterConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="databasesTableAdapter" GeneratorDataComponentClassName="databasesTableAdapter" Name="databases" UserDataComponentName="databasesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="masterConnectionString (Settings)" DbObjectName="master.sys.databases" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        name, database_id
+FROM            sys.databases
+WHERE        (database_id &gt;= 5) AND (NOT (name LIKE N'ReportServer%'))
+ORDER BY name</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="database_id" DataSetColumn="database_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="masterDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="masterDataSet" msprop:Generator_UserDSName="masterDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="databases" msprop:Generator_TableClassName="databasesDataTable" msprop:Generator_TableVarName="tabledatabases" msprop:Generator_RowChangedName="databasesRowChanged" msprop:Generator_TablePropName="databases" msprop:Generator_RowDeletingName="databasesRowDeleting" msprop:Generator_RowChangingName="databasesRowChanging" msprop:Generator_RowEvHandlerName="databasesRowChangeEventHandler" msprop:Generator_RowDeletedName="databasesRowDeleted" msprop:Generator_RowClassName="databasesRow" msprop:Generator_UserTableName="databases" msprop:Generator_RowEvArgName="databasesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="database_id" msprop:Generator_ColumnVarNameInTable="columndatabase_id" msprop:Generator_ColumnPropNameInRow="database_id" msprop:Generator_ColumnPropNameInTable="database_idColumn" msprop:Generator_UserColumnName="database_id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:databases" />
+      <xs:field xpath="mstns:database_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
